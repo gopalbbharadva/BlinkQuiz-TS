@@ -82,7 +82,7 @@ export const LoginPage = () => {
               <input id="remember-me" type="checkbox" />
               Remember me
             </label>
-            <a className="forgot-link pointer">Forgot Password?</a>
+            <span className="forgot-link pointer">Forgot Password?</span>
           </div>
           <div className="btn-area">
             <button
@@ -111,9 +111,9 @@ export const LoginPage = () => {
         </form>
         <span className="text-or">Or</span>
         <p className="align-center">
-          New user?
+          New user?{" "}
           <Link to="/signup">
-            <a className="auth-link cursor">Create an account</a>
+            <span className="auth-link cursor">Create an account</span>
           </Link>
         </p>
       </div>

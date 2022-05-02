@@ -62,7 +62,7 @@ export const SignupPage = () => {
               inputName="firstName"
               inputType="text"
               changeHandler={formHandler}
-              inputPlaceHolder="john"
+              inputPlaceHolder="rowman"
               inputClass="input is-input-primary"
             />
             <TextInput
@@ -70,7 +70,7 @@ export const SignupPage = () => {
               inputName="lastName"
               inputType="text"
               changeHandler={formHandler}
-              inputPlaceHolder="cena"
+              inputPlaceHolder="charlie"
               inputClass="input is-input-primary"
             />
           </div>
@@ -158,9 +158,9 @@ export const SignupPage = () => {
           </button>
         </form>
         <p className="align-center">
-          Already have an account?
+          Already have an account?{" "}
           <Link to="/login">
-            <a className="auth-link cursor">Login</a>
+            <span className="auth-link"> Login</span>
           </Link>
         </p>
       </div>
