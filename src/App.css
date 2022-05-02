@@ -1,0 +1,31 @@
+:root {
+  --Hover_Color: #16181d;
+
+  --padding: 1rem;
+  --margin: 1rem;
+
+  --Regular_Radius: 5px;
+  --Poppins_Font: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--Poppins_Font);
+  background-color: var(--Body_Bg_Color);
+  color: var(--Color_White);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regular-text {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}

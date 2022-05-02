@@ -1,0 +1,90 @@
+.login-card {
+  background-color: var(--Secondary_Bg_Color);
+  width: 25rem;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 5rem;
+  padding: 0.5rem 1.5rem 1rem;
+}
+.btn-area {
+  display: flex;
+  flex-direction: column;
+}
+.is-secondary {
+  background-color: var(--Secondary_Color);
+  color: var(--Color_White);
+}
+.is-secondary:hover {
+  background-color: var(--Secondary_Hover_Color);
+}
+.text-login {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 2rem;
+}
+.input-icon-container {
+  margin: 10px 0;
+  padding: 0 1rem;
+}
+.input-primary {
+  border: 2px solid var(--Primary_Color);
+}
+.text-or {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.auth-link {
+  color: var(--Primary_Color);
+}
+.horizontal-div {
+  margin: 0.5rem 0;
+  justify-content: space-between;
+  display: flex;
+}
+.horizontal-div label {
+  user-select: none;
+}
+
+.input-icon {
+  font-size: 1.2rem;
+}
+.btn-icon {
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+.login-icon {
+  margin-left: 5px;
+}
+.forgot-link {
+  font-size: 1rem;
+  color: var(--Primary_Color);
+}
+.forgot-link:hover {
+  color: var(--Color_White);
+}
+.is-solid:disabled {
+  background-color: var(--Secondary_Border_Color);
+  color: var(--Secondary_Color);
+  cursor: not-allowed;
+}
+
+.is-secondary:disabled {
+  background-color: var(--Secondary_Border_Color);
+  color: var(--Secondary_Color);
+  cursor: not-allowed;
+}
+
+.clr-red {
+  color: var(--Color_Danger_500);
+}
+
+.input {
+  background: transparent;
+  width: 90%;
+  outline: none;
+  margin: 0;
+  color: var(--Color_White);
+}
