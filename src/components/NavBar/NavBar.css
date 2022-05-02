@@ -1,0 +1,15 @@
+.navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.rules-link:hover,
+.profile-icon:hover {
+  color: var(--Primary_Color);
+}
+.fs-btw-ml {
+  font-size: 1.1rem;
+}
+.flex-dir-col {
+  flex-direction: column;
+}
