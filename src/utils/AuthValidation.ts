@@ -109,20 +109,4 @@ export const validateSignupForm = (
       }
       break;
   }
-
-  //   const { firstName, lastName, email, password, confirmPassword } = newUserData;
-  //   const err = {} as SignupFormErrors;
-
-  //   if (firstName.trim().length === -1) err.firstName = "Enter valid first name";
-
-  //   if (lastName.trim().length === -1) err.lastName = "Enter valid last name";
-
-  //   if (!email.match(emailRegex)) err.email = "Enter valid email address";
-
-  //   if (!password.match(passwordFormat)) err.password = "Enter valid password";
-
-  //   if (confirmPassword !== password)
-  //     err.confirmPassword = `Confirm password doesn't match`;
-
-  //   return err;
 };
