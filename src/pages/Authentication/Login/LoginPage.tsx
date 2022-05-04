@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
@@ -13,14 +13,6 @@ import {
 import { useTogglePassword } from "../../../hooks/hookExport";
 import { getAuth } from "firebase/auth";
 import { useAuth } from "../../../contexts/AuthContext";
-
-// type stateType = {
-//   state: { from: { pathname: string } };
-// };
-
-// interface CustomizeState {
-//   myState: string;
-// }
 
 type LocationProps = {
   state: {
