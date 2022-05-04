@@ -55,6 +55,16 @@ export const LoginPage = () => {
     }
   };
 
+  const dummySignIn = async () => {
+    try {
+      setUserData({ email: "gopal@gmail.com", password: "Gopal@123" });
+      await login(auth, "gopal@gmail.com", "Gopal@123");
+      navigate(location?.state?.from.pathname || "/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex-center">
       <div className="login-card mg-lg">
@@ -105,6 +115,8 @@ export const LoginPage = () => {
           </div>
           <div className="btn-area">
             <button
+              type="button"
+              onClick={dummySignIn}
               disabled={
                 Object.entries(loginFormErrors).length === 0 &&
                 Object.entries(userData).length === 2

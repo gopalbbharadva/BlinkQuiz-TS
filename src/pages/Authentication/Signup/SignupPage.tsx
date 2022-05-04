@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useTogglePassword } from "../../../hooks/hookExport";
@@ -16,6 +16,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 export const SignupPage = () => {
   const auth = getAuth();
   const { signUp } = useAuth();
+  const navigate = useNavigate();
   const {
     passwordToggle,
     checkPasswordView,
@@ -51,6 +52,7 @@ export const SignupPage = () => {
     e.preventDefault();
     try {
       await signUp(auth, newUserData.email, newUserData.password);
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }
