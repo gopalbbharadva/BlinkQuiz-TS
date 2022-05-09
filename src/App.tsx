@@ -1,6 +1,5 @@
 import "./App.css";
-import { Loader } from "./components/loader/Loader";
-import { NavBar } from "./components/NavBar/NavBar";
+import { NavBar, Loader } from "./components/compExport";
 import { useAuth } from "./contexts/AuthContext";
 import { AppRoute } from "./routes/AppRoute";
 
