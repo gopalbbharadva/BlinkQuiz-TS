@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -11,9 +11,23 @@ import {
   ReactFormEvent,
 } from "../../../types/ReactEvents.types";
 import { useTogglePassword } from "../../../hooks/hookExport";
+import { getAuth } from "firebase/auth";
+import { useAuth } from "../../../contexts/AuthContext";
+
+type LocationProps = {
+  state: {
+    from: Location;
+  };
+};
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const auth = getAuth();
+  const location = useLocation() as unknown as LocationProps;
+  const { login } = useAuth();
+
+  console.log(location?.state?.from?.pathname);
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -31,14 +45,29 @@ export const LoginPage = () => {
     valiDateForm(name, value, loginFormErrors, setLoginFormErrors);
   };
 
-  const submitHandler = (e: ReactFormEvent) => {
+  const submitHandler = async (e: ReactFormEvent) => {
     e.preventDefault();
-    navigate("/");
+    try {
+      await login(auth, userData.email, userData.password);
+      navigate(location?.state?.from?.pathname || "/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const dummySignIn = async () => {
+    try {
+      setUserData({ email: "gopal@gmail.com", password: "Gopal@123" });
+      await login(auth, "gopal@gmail.com", "Gopal@123");
+      navigate(location?.state?.from.pathname || "/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="flex-center">
-      <div className="login-card">
+      <div className="login-card mg-lg">
         <p className="text-login fs-lg">Login</p>
         <form onSubmit={submitHandler}>
           <div className="input-icon-container input-primary">
@@ -86,6 +115,8 @@ export const LoginPage = () => {
           </div>
           <div className="btn-area">
             <button
+              type="button"
+              onClick={dummySignIn}
               disabled={
                 Object.entries(loginFormErrors).length === 0 &&
                 Object.entries(userData).length === 2

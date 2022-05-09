@@ -10,7 +10,10 @@ export const Quiz = ({ quizItem }: QuizProps) => {
       <div className="quiz-image-container flex-center">
         <img className="quiz-image" src={imgSrc} alt="linux logo" />
       </div>
-      <Link to="/rules" className="btn is-outline fs-btw-ml mg-top-1 bg-transparent">
+      <Link
+        to="/rules"
+        className="btn is-outline fs-btw-ml mg-top-1 bg-transparent"
+      >
         Play
       </Link>
     </div>

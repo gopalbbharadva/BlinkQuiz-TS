@@ -24,7 +24,10 @@ export const RulesPage = () => {
             <p className="rule">4. You can't your answer once you selected.</p>
           </li>
         </ul>
-        <Link to="/question" className="btn is-outline fs-btw-ml bg-transparent">
+        <Link
+          to="/question"
+          className="btn is-outline fs-btw-ml bg-transparent"
+        >
           Start quiz
         </Link>
       </div>

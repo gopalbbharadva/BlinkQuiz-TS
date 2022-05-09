@@ -10,8 +10,12 @@ import {
   ReactFormEvent,
 } from "../../../types/ReactEvents.types";
 import { validateSignupForm } from "../../../utils/AuthValidation";
+import { getAuth } from "firebase/auth";
+import { useAuth } from "../../../contexts/AuthContext";
 
 export const SignupPage = () => {
+  const auth = getAuth();
+  const { signUp } = useAuth();
   const navigate = useNavigate();
   const {
     passwordToggle,
@@ -44,14 +48,26 @@ export const SignupPage = () => {
     );
   };
 
-  const submitHandler = (e: ReactFormEvent) => {
+  const submitHandler = async (e: ReactFormEvent) => {
     e.preventDefault();
-    navigate("/");
+    try {
+      await signUp(auth, newUserData.email, newUserData.password);
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+    setNewUserData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
 
   return (
     <div className="flex-center">
-      <div className="signup-card">
+      <div className="signup-card mg-lg">
         <p title="hello" className="text-signup fs-lg">
           Signup
         </p>
