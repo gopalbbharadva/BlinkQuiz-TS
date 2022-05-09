@@ -1,13 +1,20 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "@firebase/app";
+import { getAuth } from "firebase/auth";
+import { collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjChTs9ZGFpLBWnnhf2YLmyvym-NCXF4U",
-  authDomain: "quiz-app-970ca.firebaseapp.com",
-  projectId: "quiz-app-970ca",
-  storageBucket: "quiz-app-970ca.appspot.com",
-  messagingSenderId: "602415348858",
-  appId: "1:602415348858:web:892bfce10291972942cfc3",
-  measurementId: "G-BHDZP68V1K",
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_APP_ID}`,
 };
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const categoryRef = collection(db, "categories");
+const quizzesRef = collection(db, "quizzes");
+
+export { db, categoryRef, quizzesRef, app, auth };

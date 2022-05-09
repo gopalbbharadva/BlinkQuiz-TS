@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import {
   HomePage,
   LoginPage,
@@ -12,45 +13,55 @@ import { ProfilePage } from "../pages/Profile/ProfilePage";
 import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRoute = () => {
+  const { isLoading } = useAuth();
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/category/categoryId" element={<QuizzesPage />} />
-      <Route
-        path="/rules"
-        element={
-          <PrivateRoute>
-            <RulesPage />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/category/:categoryId" element={<QuizzesPage />} />
+      {!isLoading && (
+        <Route
+          path="/rules"
+          element={
+            <PrivateRoute>
+              <RulesPage />
+            </PrivateRoute>
+          }
+        />
+      )}
 
-      <Route
-        path="/question"
-        element={
-          <PrivateRoute>
-            <QuestionPage />
-          </PrivateRoute>
-        }
-      />
+      {!isLoading && (
+        <Route
+          path="/question"
+          element={
+            <PrivateRoute>
+              <QuestionPage />
+            </PrivateRoute>
+          }
+        />
+      )}
 
-      <Route
-        path="/result"
-        element={
-          <PrivateRoute>
-            <ResultPage />
-          </PrivateRoute>
-        }
-      />
+      {!isLoading && (
+        <Route
+          path="/result"
+          element={
+            <PrivateRoute>
+              <ResultPage />
+            </PrivateRoute>
+          }
+        />
+      )}
 
-      <Route
-        path="/profile"
-        element={
-          <PrivateRoute>
-            <ProfilePage />
-          </PrivateRoute>
-        }
-      />
+      {!isLoading && (
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+      )}
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
