@@ -1,7 +1,10 @@
 export type CategoryProps = {
-  categoryItem: {
-    quizTitle: string;
-    imgSrc: string;
-    description: string;
-  };
+  categoryItem: Category;
+};
+
+export type Category = {
+  id: string;
+  title: string;
+  imgSrc: string;
+  description: string;
 };
