@@ -1,9 +1,22 @@
 import "./HomePage.css";
 import QuizIntro from "../../assets/Images/QuizIntro.svg";
 import { QuizCategory } from "./components/QuizCategory";
-import { categoryArray } from "../../constants/constants";
+import { Category } from "../../types/Category.types";
+import { useQuiz } from "../../contexts/contextExport";
+import { useEffect } from "react";
+import { useQuestion } from "../../hooks/useQuestion";
 
 export const HomePage = () => {
+  const {
+    quizState: { categories },
+  } = useQuiz();
+
+  const { navigateToHome } = useQuestion();
+
+  useEffect(() => {
+    navigateToHome();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <main>
       <div className="app-intro flex-center">
@@ -25,8 +38,8 @@ export const HomePage = () => {
 
       <h1 className="quiz-section-title align-center">Categories</h1>
       <div id="quiz-section" className="quiz-wrapper">
-        {categoryArray.map((category) => (
-          <QuizCategory categoryItem={category} />
+        {categories.map((category: Category, index: number) => (
+          <QuizCategory categoryItem={category} key={index} />
         ))}
       </div>
     </main>

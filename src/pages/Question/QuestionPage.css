@@ -1,5 +1,4 @@
 .question-grid {
-  height: 60vh;
   display: grid;
   padding: var(--padding);
   align-content: center;
@@ -33,6 +32,7 @@
 .option-container {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
 }
 .option {
   font-size: 0.9rem;
@@ -43,6 +43,10 @@
   border-radius: 3rem;
 }
 .option:hover {
+  background-color: var(--Primary_Color);
+  transition: 0.3s;
+}
+.selected-option {
   background-color: var(--Primary_Color);
   transition: 0.3s;
 }

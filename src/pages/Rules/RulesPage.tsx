@@ -12,16 +12,14 @@ export const RulesPage = () => {
           </li>
           <li className="rule-item">
             <p className="rule">
-              2. For wrong answer 5 marks will deduct from total.
+              2. To reach to the next you need at least 60% marks.
             </p>
           </li>
           <li className="rule-item">
             <p className="rule">
-              3. To reach to the next you need at least 60% marks.
+              3. You can't go back to previous question once you reach to next
+              question.
             </p>
-          </li>
-          <li className="rule-item">
-            <p className="rule">4. You can't your answer once you selected.</p>
           </li>
         </ul>
         <Link

@@ -4,7 +4,6 @@
 .wrong-answer {
   background-color: var(--Color_Danger_500);
 }
-
 .event-none {
   pointer-events: none;
   cursor: not-allowed;
@@ -12,6 +11,7 @@
 
 @media screen and (min-width: 500px) {
   .question-container {
+    display: grid;
     grid-template-columns: 30rem;
     justify-content: center;
   }

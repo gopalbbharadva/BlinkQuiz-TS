@@ -1,15 +1,21 @@
-import { questionsArray } from "../../constants/constants";
+import { useQuizQuestion } from "../../contexts/contextExport";
 import { QuestionInfo } from "./components/QuestionInfo/QuestionInfo";
 import "./QuestionPage.css";
 
 export const QuestionPage = () => {
+  const {
+    questionState: { questions, currentQuestionIndex },
+  } = useQuizQuestion();
+  const currentQuestion = questions[currentQuestionIndex];
+
   return (
     <>
-      <h2 className="question-header align-center">Linux Basics</h2>
       <div className="question-grid">
-        {questionsArray.map((item, index) => (
-          <QuestionInfo index={index} questionItem={item} key={index} />
-        ))}
+        <QuestionInfo
+          index={currentQuestionIndex}
+          questionItem={currentQuestion}
+          key={currentQuestion}
+        />
       </div>
     </>
   );

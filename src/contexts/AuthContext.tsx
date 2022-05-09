@@ -1,23 +1,24 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  getAuth,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
   Auth,
 } from "firebase/auth";
-import "../firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { ChildrenProps } from "../types/ReactEvents.types";
-import { AuthUser, ContextProps } from "../types/AuthContext.types";
+import {
+  AuthUser,
+  ContextProps,
+} from "../types/ContextTypes/AuthContext.types";
+import { auth } from "../firebase/FirebaseConfig";
 
-const auth = getAuth();
 export const AuthContext = createContext({} as ContextProps);
 
 const AuthProvider = ({ children }: ChildrenProps) => {
   const [user, setUser] = useState({} as AuthUser);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [showLoader, setShowLoader] = useState(true);
 
@@ -26,11 +27,11 @@ const AuthProvider = ({ children }: ChildrenProps) => {
   }, 1500);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser({ email: currentUser?.email });
       setIsLoading(false);
     });
-    setIsLoading(false);
+    return unsubscribe;
   }, []);
 
   const login = (auth: Auth, email: string, password: string) => {
