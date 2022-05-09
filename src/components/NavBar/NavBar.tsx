@@ -16,15 +16,6 @@ export const NavBar = () => {
           <Link to="/">
             <p className="logo-link fs-xlg pointer">BlinkQuiz</p>
           </Link>
-          {user?.email ? (
-            <Link to="/result">
-              <p className="rules-link pointer">Result</p>
-            </Link>
-          ) : (
-            <Link to="/login">
-              <p className="rules-link pointer">Result</p>
-            </Link>
-          )}
         </div>
       </div>
       <div className="nav-right-part flex-center">

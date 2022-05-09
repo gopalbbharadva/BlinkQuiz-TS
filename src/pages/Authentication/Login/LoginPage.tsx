@@ -26,8 +26,6 @@ export const LoginPage = () => {
   const location = useLocation() as unknown as LocationProps;
   const { login } = useAuth();
 
-  console.log(location?.state?.from?.pathname);
-
   const [userData, setUserData] = useState({
     email: "",
     password: "",
