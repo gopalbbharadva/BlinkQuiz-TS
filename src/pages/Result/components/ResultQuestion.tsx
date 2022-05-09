@@ -4,18 +4,17 @@ export const ResultQuestion = ({
   question,
   answer,
   options,
+  userAnswer,
 }: ResultQuestionProps) => {
-  const userAnswer = "Fedora";
-
   return (
-    <div>
+    <div className="mg-vrtl-xlg">
       <p className="question">{question}</p>
       <div className="option-container">
         {options.map((item, index) => (
           <div
             className={`option mg-vrtl-sm event-none ${
               item === answer ? "right-answer" : ""
-            } ${item === userAnswer ? "wrong-answer" : ""}`}
+            } ${item !== answer && item === userAnswer ? "wrong-answer" : ""} `}
             key={index}
           >
             {item}
