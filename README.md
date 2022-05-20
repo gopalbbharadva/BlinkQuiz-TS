@@ -1,6 +1,6 @@
-# vFrame.
+# BlinkQuiz.
 
-vFrame is a video library for summary of **books**.
+BlinkQuiz is a quiz app for fun and test your knowledge
 
 *** 
 
@@ -27,7 +27,7 @@ vFrame is a video library for summary of **books**.
 
 <a name="why"/>
 
-### Why vFrame?
+### Why Blinkquiz?
 * Blinkquiz is a quiz app where you can test your knowledge by playing several quizzes.
 
 ***
