@@ -10,8 +10,8 @@ import {
   ReactFormEvent,
 } from "../../../types/ReactEvents.types";
 import { validateSignupForm } from "../../../utils/AuthValidation";
-import { getAuth } from "firebase/auth";
 import { useAuth } from "../../../contexts/AuthContext";
+import { usersRef, getAuth, addDoc } from "../../../firebase/FirebaseConfig";
 
 export const SignupPage = () => {
   const auth = getAuth();
@@ -52,7 +52,13 @@ export const SignupPage = () => {
     e.preventDefault();
     try {
       await signUp(auth, newUserData.email, newUserData.password);
-      navigate("/profile");
+      await addDoc(usersRef, {
+        firstname: newUserData.firstName,
+        lastname: newUserData.lastName,
+        email: newUserData.email,
+        password: newUserData.password,
+      });
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

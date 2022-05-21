@@ -1,4 +1,4 @@
-import {  getDocs } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { categoryRef, quizzesRef } from "../firebase/FirebaseConfig";
 import { initialState, QuizReducer } from "../reducers/QuizReducer";
@@ -13,6 +13,10 @@ const QuizProvider = ({ children }: ChildrenProps) => {
   useEffect(() => {
     (async () => {
       try {
+        quizDispatch({
+          type: "FETCH_CATEGORIES",
+          payload: { isLoading: true },
+        });
         const res = await getDocs(categoryRef);
         quizDispatch({
           type: "GET_CATEGORIES",
@@ -21,6 +25,7 @@ const QuizProvider = ({ children }: ChildrenProps) => {
               ...category.data(),
               id: category.id,
             })),
+            isLoading: false,
           },
         });
       } catch (error) {

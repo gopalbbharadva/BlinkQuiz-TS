@@ -1,10 +1,16 @@
-.loader-container {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--Color_White);
-  z-index: 5;
+.loader-container::after {
+  content: "";
+  height: 8rem;
+  width: 8rem;
+  border: 20px solid var(--Secondary_Bg_Color);
+  border-top-color: var(--Primary_Color);
+  border-bottom-color: var(--Primary_Color);
+  border-radius: 50%;
+  animation: loader-container 1s linear infinite;
+}
+
+@keyframes loader-container {
+  to {
+    transform: rotate(1turn);
+  }
 }

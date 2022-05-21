@@ -1,6 +1,7 @@
 import "./NavBar.css";
 import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MdOutlineLeaderboard } from "react-icons/md";
 import { useAuth } from "../../contexts/AuthContext";
 
 export const NavBar = () => {
@@ -19,6 +20,11 @@ export const NavBar = () => {
         </div>
       </div>
       <div className="nav-right-part flex-center">
+        <Link to="/leaderboard">
+          <p className="pointer profile-icon">
+            <MdOutlineLeaderboard className="fs-lg" />
+          </p>
+        </Link>
         {user?.email ? (
           <Link to="/profile">
             <p className="pointer profile-icon">

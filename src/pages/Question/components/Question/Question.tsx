@@ -11,7 +11,7 @@ export const Question = ({ options, question }: QuestionProps) => {
     <>
       <p className="question mg-vrtl-sm">{question}</p>
       <div className="option-container mg-vrtl-sm">
-        {options.map((item, index) => (
+        {options?.map((item, index) => (
           <div
             onClick={() =>
               questionDispatch({

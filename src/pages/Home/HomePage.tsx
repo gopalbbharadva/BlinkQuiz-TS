@@ -5,12 +5,12 @@ import { Category } from "../../types/Category.types";
 import { useQuiz } from "../../contexts/contextExport";
 import { useEffect } from "react";
 import { useQuestion } from "../../hooks/useQuestion";
+import { Loader } from "../../components/compExport";
 
 export const HomePage = () => {
   const {
-    quizState: { categories },
+    quizState: { categories, isLoading },
   } = useQuiz();
-
   const { navigateToHome } = useQuestion();
 
   useEffect(() => {
@@ -37,11 +37,15 @@ export const HomePage = () => {
       </div>
 
       <h1 className="quiz-section-title align-center">Categories</h1>
-      <div id="quiz-section" className="quiz-wrapper">
-        {categories.map((category: Category, index: number) => (
-          <QuizCategory categoryItem={category} key={index} />
-        ))}
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div id="quiz-section" className="quiz-wrapper">
+          {categories.map((category: Category, index: number) => (
+            <QuizCategory categoryItem={category} key={index} />
+          ))}
+        </div>
+      )}
     </main>
   );
 };
