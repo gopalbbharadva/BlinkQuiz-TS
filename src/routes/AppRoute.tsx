@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { LeaderBoard } from "../pages/LeaderBoard/LeaderBoard";
 import {
   HomePage,
   LoginPage,
@@ -58,6 +59,16 @@ export const AppRoute = () => {
           element={
             <PrivateRoute>
               <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+      )}
+      {!isLoading && (
+        <Route
+          path="/leaderboard"
+          element={
+            <PrivateRoute>
+              <LeaderBoard />
             </PrivateRoute>
           }
         />

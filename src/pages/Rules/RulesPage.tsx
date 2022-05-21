@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useQuizQuestion } from "../../contexts/QuestionContext";
 import "./RulesPage.css";
 
 export const RulesPage = () => {
+  const {
+    questionState: { questions },
+  } = useQuizQuestion();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    questions.length === 0 && navigate("/");
+  }, [questions]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="rules-grid">
       <div className="rules-container flex-center flex-dir-col">

@@ -1,0 +1,16 @@
+.leader-board {
+  margin: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 30rem;
+}
+.user {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 1px solid var(--Color_White);
+}
+.text-primary {
+  color: var(--Primary_Color);
+}
