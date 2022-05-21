@@ -8,7 +8,7 @@ export const LeaderBoard = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="board-container flex-center">
