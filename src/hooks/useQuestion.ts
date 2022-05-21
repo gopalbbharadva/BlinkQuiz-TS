@@ -10,6 +10,10 @@ export const useQuestion = () => {
   const getQuestions = async (quizId: string) => {
     const questionRef = collection(db, `/quizzes/${quizId}/questions`);
     try {
+      questionDispatch({
+        type: "FETCH_QUESTIONS",
+        payload: { isLoading: true },
+      });
       const res = await getDocs(questionRef);
       questionDispatch({
         type: "GET_QUESTIONS",
@@ -18,6 +22,7 @@ export const useQuestion = () => {
             ...question.data(),
             id: question.id,
           })),
+          isLoading: false,
         },
       });
     } catch (error) {

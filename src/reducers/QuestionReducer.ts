@@ -9,6 +9,8 @@ export const questionInitialState = {
   userAnswers: [],
   totalScore: 0,
   currentQuestionIndex: 0,
+  isLoading: true,
+  error: "",
 };
 
 export const questionReducer = (
@@ -16,10 +18,17 @@ export const questionReducer = (
   action: QuestionStateActions
 ) => {
   switch (action.type) {
+    case "FETCH_QUESTIONS":
+      return {
+        ...state,
+        isLoading: action.payload.isLoading,
+      };
+
     case "GET_QUESTIONS":
       return {
         ...state,
         questions: action.payload.questions,
+        isLoading: action.payload.isLoading,
       };
 
     case "SET_CURRENT_ANSWER":

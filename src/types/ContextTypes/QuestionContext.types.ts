@@ -6,6 +6,8 @@ export type QuestionContextProps = {
 };
 
 export type QuestionStateProps = {
+  isLoading: boolean;
+  error: string;
   questions: DocumentData;
   currentAnswer: string;
   userAnswers: string[];
@@ -19,10 +21,18 @@ export type QuestionStateActions =
   | UserAnswerAction
   | ScoreAction
   | ResetAction
-  | QuestionIndexAction;
+  | QuestionIndexAction
+  | FetchQuestionsAction;
 
 export type ResetAction = {
   type: "RESET_QUIZ";
+};
+
+export type FetchQuestionsAction = {
+  type: "FETCH_QUESTIONS";
+  payload: {
+    isLoading: boolean;
+  };
 };
 
 export type QuestionIndexAction = {
@@ -33,6 +43,7 @@ export type QuestionAction = {
   type: "GET_QUESTIONS";
   payload: {
     questions: DocumentData;
+    isLoading: boolean;
   };
 };
 
