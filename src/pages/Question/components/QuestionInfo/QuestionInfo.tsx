@@ -10,7 +10,11 @@ import { db } from "../../../../firebase/FirebaseConfig";
 import { useQuestion } from "../../../../hooks/useQuestion";
 import { Question } from "../Question/Question";
 
-export const QuestionInfo = ({ questionItem, index }: DocumentData) => {
+export const QuestionInfo = ({
+  questionItem,
+  index,
+  totalQuestions,
+}: DocumentData) => {
   const {
     questionState: { currentAnswer, questions, totalScore },
     questionDispatch,
@@ -20,7 +24,7 @@ export const QuestionInfo = ({ questionItem, index }: DocumentData) => {
   const { changeQuestion, navigateToHome } = useQuestion();
 
   const currentUser = users?.find(
-    (item: DocumentData) => item.email === user?.email
+    (item: DocumentData) => item?.email === user?.email
   );
   const userRef = doc(db, "users", currentUser?.id);
   const navigate = useNavigate();
@@ -68,8 +72,8 @@ export const QuestionInfo = ({ questionItem, index }: DocumentData) => {
   };
 
   useEffect(() => {
-    questionItem === undefined && navigate("/");
-  }, [questionItem]); // eslint-disable-line react-hooks/exhaustive-deps
+    questions.length === 0 && navigate("/");
+  }, [questions]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="question-container">
@@ -80,7 +84,7 @@ export const QuestionInfo = ({ questionItem, index }: DocumentData) => {
         <p>
           Question:{" "}
           <span className="current-question">
-            {index + 1} / {questionItem?.questions?.length}
+            {index + 1} / {totalQuestions}
           </span>
         </p>
         <p>
