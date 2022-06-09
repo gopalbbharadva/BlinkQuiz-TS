@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useQuizQuestion } from "../../contexts/contextExport";
 import { QuestionInfo } from "./components/QuestionInfo/QuestionInfo";
 import "./QuestionPage.css";
@@ -9,13 +7,7 @@ export const QuestionPage = () => {
     questionState: { questions, currentQuestionIndex },
   } = useQuizQuestion();
 
-  const navigate = useNavigate();
   const currentQuestion = questions[currentQuestionIndex];
-
-
-  // useEffect(() => {
-  //   questions.length === 0 && navigate("/");
-  // }, [questions]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
