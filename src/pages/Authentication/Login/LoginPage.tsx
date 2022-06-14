@@ -104,13 +104,6 @@ export const LoginPage = () => {
           {loginFormErrors.password && (
             <p className="clr-red">{loginFormErrors.password}</p>
           )}
-          <div className="horizontal-div">
-            <label className="cursor" htmlFor="remember-me">
-              <input id="remember-me" type="checkbox" />
-              Remember me
-            </label>
-            <span className="forgot-link pointer">Forgot Password?</span>
-          </div>
           <div className="btn-area">
             <button
               type="button"
